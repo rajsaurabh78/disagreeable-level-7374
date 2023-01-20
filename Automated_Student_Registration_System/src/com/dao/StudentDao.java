@@ -11,7 +11,7 @@ public interface StudentDao {
 	public String registerStudent(Student student)throws studentException;
 	public String loginStudent(String name,String pass)throws studentException;
 	public List<availableCourse> availableCourseList()throws courseException;
-	public String registerINaCourse(String username,String password,int cId)throws batchException;
+	public String registerINaCourse(String username,String password,int cId)throws batchException,studentException,courseException;
 }	
 //1. Register himself in a course with a username and password
 //	(email should be the username)

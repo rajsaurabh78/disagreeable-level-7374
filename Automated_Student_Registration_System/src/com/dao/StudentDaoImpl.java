@@ -85,19 +85,46 @@ public class StudentDaoImpl implements StudentDao{
 		return res;
 	}
 	@Override
-	public String registerINaCourse(String username,String password,int cId) throws batchException {
+	public String registerINaCourse(String username,String password,int cId) throws batchException,studentException,courseException {
 		String stu=null;
 		try (Connection conn=DBUTil.provideConnection()){
-			PreparedStatement ps=conn.prepareStatement("update Student set cId=? where sEmail=? AND sPassword=?");
-			ps.setInt(1, cId);
-			ps.setString(2, username);
-			ps.setString(3, password);
-			int x=ps.executeUpdate();
-			if(x>0) {
-				conn.prepareStatement("update Batch set seats=count(seats)-1 where cId=?");
-				stu="Sucessfull x Inrolled for Course cgg";
+
+			PreparedStatement ps=conn.prepareStatement("select * from Student where sEmail=? AND sPassword=?");
+			ps.setString(1, username);
+			ps.setString(2, password);
+			ResultSet rs=ps.executeQuery();
+			
+			if(rs.next()) {
+				String name=rs.getString(cId);
+				PreparedStatement ps1=conn.prepareStatement("select * from Batch where cId=?");
+				ps1.setInt(1, cId);
+				ResultSet rs1=ps1.executeQuery();
+				if(rs1.next()) {
+					int seat=rs1.getInt("seats");
+					int bId=rs1.getInt("bId");
+					if(seat>0) {
+						PreparedStatement ps2=conn.prepareStatement("update Student set cId=?AND bid=? where sEmail=? AND sPassword=?");
+						ps2.setInt(1, cId);
+						ps2.setInt(2, bId);
+						ps2.setString(3, username);
+						ps2.setString(4, password);
+						int x=ps2.executeUpdate();
+						if(x>0) {
+							
+							conn.prepareStatement("update Batch set seats=count(seats)-1 where cId=?");
+							stu="Sucessfull "+name+" Inrolled for Course cgg" ;
+							
+						}else
+							throw new courseException("Invilade Course Id");
+						
+					}else
+						throw new batchException("Seat full");
+						
+				}
+	
+				
 			}else
-				throw new batchException("No Seats Avaleable");
+				throw new studentException("Invilade Username or Password");
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
