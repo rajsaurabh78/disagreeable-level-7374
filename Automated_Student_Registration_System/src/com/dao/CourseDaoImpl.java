@@ -9,6 +9,7 @@ import com.exception.administratortException;
 import com.exception.batchException;
 import com.exception.courseException;
 import com.exception.studentException;
+import com.modal.Administrator;
 import com.modal.Batch;
 import com.modal.Course;
 import com.modal.Student;
@@ -129,21 +130,37 @@ public class CourseDaoImpl implements CourseDao{
 	}
 
 	@Override
-	public String registerAdministrator(Student student) throws administratortException {
-		// TODO Auto-generated method stub
-		return null;
+	public String registerAdministrator(Administrator administrator) throws administratortException {
+		String admin=null;
+		try (Connection conn=DBUTil.provideConnection()){
+			PreparedStatement ps=conn.prepareStatement("insert into Administrator (aName,aEmail,aPassword) values(?,?,?)");
+			ps.setString(1, administrator.getaName());
+			ps.setString(2, administrator.getaEmail());
+			ps.setString(3, administrator.getaPassword());
+
+			int x=ps.executeUpdate();
+			if(x>0) {
+				admin=administrator.getaName()+" is registered";
+			}else
+				throw new administratortException("Not Registered");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return admin;
 	}
 
 	@Override
 	public String loginAdministrator(String name, String pass) throws administratortException {
 		String admin=null;
 		try (Connection conn=DBUTil.provideConnection()){
-			PreparedStatement ps=conn.prepareStatement("select * from Administrator where sEmail=? AND sPassword=?");
+			PreparedStatement ps=conn.prepareStatement("select * from Administrator where aEmail=? AND aPassword=?");
 			ps.setString(1,name);
 			ps.setString(2,pass);
 			ResultSet rs=ps.executeQuery();
 			if(rs.next()) {
-				admin="Welcome "+rs.getString("sName");
+				admin="Welcome "+rs.getString("aName");
 			}else
 				throw new administratortException("Invilade UserName or Password.");
 			

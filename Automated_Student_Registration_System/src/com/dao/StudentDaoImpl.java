@@ -4,9 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+import com.exception.batchException;
+import com.exception.courseException;
 import com.exception.studentException;
+import com.modal.Course;
 import com.modal.Student;
+import com.modal.availableCourse;
 import com.utility.DBUTil;
 
 public class StudentDaoImpl implements StudentDao{
@@ -50,6 +57,51 @@ public class StudentDaoImpl implements StudentDao{
 			e.printStackTrace();
 		}
 		
+		return stu;
+	}
+	@Override
+	public List<availableCourse> availableCourseList() throws courseException {
+		List<availableCourse> res=new ArrayList<>();
+		try(Connection conn=DBUTil.provideConnection()) {
+			PreparedStatement ps=conn.prepareStatement("select c.cId,c.cName,b.bName,b.seats from Course c INNER JOIN Batch b ON c.cId=b.cId");
+			ResultSet rs=ps.executeQuery();
+			
+			while(rs.next()) {
+				int id=rs.getInt("cId");
+				String cn=rs.getString("cName");
+				String bn=rs.getString("bName");
+				String s=rs.getString("seats");
+				availableCourse temp=new availableCourse(id, cn, bn, s);
+			
+				res.add(temp);
+			}
+			if(res.isEmpty()) {
+				throw new courseException("No any Course found.");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+	@Override
+	public String registerINaCourse(String username,String password,int cId) throws batchException {
+		String stu=null;
+		try (Connection conn=DBUTil.provideConnection()){
+			PreparedStatement ps=conn.prepareStatement("update Student set cId=? where sEmail=? AND sPassword=?");
+			ps.setInt(1, cId);
+			ps.setString(2, username);
+			ps.setString(3, password);
+			int x=ps.executeUpdate();
+			if(x>0) {
+				conn.prepareStatement("update Batch set seats=count(seats)-1 where cId=?");
+				stu="Sucessfull x Inrolled for Course cgg";
+			}else
+				throw new batchException("No Seats Avaleable");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return stu;
 	}
 

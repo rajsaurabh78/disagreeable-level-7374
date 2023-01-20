@@ -4,26 +4,35 @@ import java.util.Scanner;
 
 import com.dao.CourseDao;
 import com.dao.CourseDaoImpl;
+import com.dao.StudentDao;
+import com.dao.StudentDaoImpl;
 import com.exception.administratortException;
+import com.exception.studentException;
+import com.modal.Administrator;
+import com.modal.Student;
 
-public class loginAdministrator {
+public class registerAdministrator {
 
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
 		CourseDao dao=new CourseDaoImpl();
-		System.out.println("Fill following details for login");
+		System.out.println("Fill following details to register yourself");
+			System.out.println("Enter Name");
+			String n=sc.next();
 			System.out.println("Enter Email");
 			String e=sc.next();
 			System.out.println("Enter Password");
 			String p=sc.next();
+
+			Administrator temp=new Administrator(0, n, e, p);
 			try {
-				String stu=dao.loginAdministrator(e, p);
+				String stu=dao.registerAdministrator(temp);
 				System.out.println(stu);
 			} catch (administratortException e1) {
 				// TODO Auto-generated catch block
 				System.out.println(e1.getMessage());
 			}
-				System.out.println("Yor are sucessfully loged in.");
+				System.out.println("Thanks");
 		}
 
 	}

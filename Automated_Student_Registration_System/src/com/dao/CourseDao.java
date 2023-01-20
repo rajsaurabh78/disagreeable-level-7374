@@ -3,13 +3,12 @@ package com.dao;
 import com.exception.administratortException;
 import com.exception.batchException;
 import com.exception.courseException;
-import com.exception.studentException;
+import com.modal.Administrator;
 import com.modal.Batch;
 import com.modal.Course;
-import com.modal.Student;
 
 public interface CourseDao {
-	public String registerAdministrator(Student student)throws administratortException;
+	public String registerAdministrator(Administrator administrator)throws administratortException;
 	public String loginAdministrator(String name,String pass)throws administratortException;
 	public String addNewCourse(Course course) throws courseException;
 	public String updateCourseFee(String cName,String nFee) throws courseException;
@@ -18,6 +17,8 @@ public interface CourseDao {
 	public String batchUnderCourse(Batch batch) throws batchException;
 	
 }
+//registered
+//login
 //1. Add a new Courses
 //	2. Update Fees of course.
 //	3. Delete  a course from any Training session.
