@@ -4,6 +4,7 @@ import java.util.Scanner;
 import com.dao.StudentDao;
 import com.dao.StudentDaoImpl;
 import com.exception.batchException;
+import com.exception.courseException;
 import com.exception.studentException;
 import com.modal.Student;
 import com.modal.availableCourse;
@@ -23,12 +24,20 @@ public class registerINaCourse {
 			int ph=sc.nextInt();
 			
 			try {
-				String temp=dao.registerINaCourse(e, p, ph);
-				System.out.println(temp);
+				String res=dao.registerINaCourse(e, p, ph);
+				System.out.println(res);
 			} catch (batchException e1) {
 				// TODO Auto-generated catch block
-				System.out.println(e1.getMessage());
+				e1.printStackTrace();
+			} catch (studentException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (courseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
+				
+			
 			
 				System.out.println("Do you want to inrolled in other Course ?(Y/N)");
 				String res=sc.next();

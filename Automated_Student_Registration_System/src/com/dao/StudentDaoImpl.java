@@ -95,7 +95,9 @@ public class StudentDaoImpl implements StudentDao{
 			ResultSet rs=ps.executeQuery();
 			
 			if(rs.next()) {
-				String name=rs.getString(cId);
+				
+				String name=rs.getString("sName");
+				int roll=rs.getInt("roll");
 				PreparedStatement ps1=conn.prepareStatement("select * from Batch where cId=?");
 				ps1.setInt(1, cId);
 				ResultSet rs1=ps1.executeQuery();
@@ -103,15 +105,16 @@ public class StudentDaoImpl implements StudentDao{
 					int seat=rs1.getInt("seats");
 					int bId=rs1.getInt("bId");
 					if(seat>0) {
-						PreparedStatement ps2=conn.prepareStatement("update Student set cId=?AND bid=? where sEmail=? AND sPassword=?");
-						ps2.setInt(1, cId);
-						ps2.setInt(2, bId);
-						ps2.setString(3, username);
-						ps2.setString(4, password);
+						PreparedStatement ps2=conn.prepareStatement("insert student_course(roll,cId) values(?,?)");
+						ps2.setInt(1, roll);
+						ps2.setInt(2, cId);
+					//	ps2.setInt(3, bId);
 						int x=ps2.executeUpdate();
 						if(x>0) {
 							
-							conn.prepareStatement("update Batch set seats=count(seats)-1 where cId=?");
+							PreparedStatement ps3= conn.prepareStatement("update Batch set seats=seats-1 where cId=?");
+							ps3.setInt(1, cId);
+							int b=ps3.executeUpdate();
 							stu="Sucessfull "+name+" Inrolled for Course cgg" ;
 							
 						}else
