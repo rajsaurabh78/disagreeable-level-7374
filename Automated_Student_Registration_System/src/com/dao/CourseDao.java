@@ -8,6 +8,7 @@ import com.exception.studentException;
 import com.modal.Administrator;
 import com.modal.Batch;
 import com.modal.Course;
+import com.modal.everyBatchStudentDetails;
 public interface CourseDao {
 	public String registerAdministrator(Administrator administrator)throws administratortException;
 	public String loginAdministrator(String name,String pass)throws administratortException;
@@ -18,7 +19,7 @@ public interface CourseDao {
 	public String batchUnderCourse(Batch batch) throws batchException;
 	public String updateTotalSeatsInaBatch(int bId,int uSeat) throws batchException;
 	public String AllocateStudentBatch(int roll,int cId,int bId)throws batchException;
-	public List<com.useCase.everyBatchStudentDetails> everyBatchStudentDetails()throws studentException;
+	public List<everyBatchStudentDetails> everyBatchStudentDetails()throws studentException;
 	
 }
 //registered

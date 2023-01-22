@@ -14,9 +14,8 @@ import com.exception.studentException;
 import com.modal.Administrator;
 import com.modal.Batch;
 import com.modal.Course;
-import com.modal.Student;
+import com.modal.everyBatchStudentDetails;
 import com.utility.DBUTil;
-import com.modal.*;
 public class CourseDaoImpl implements CourseDao{
 
 	@Override
