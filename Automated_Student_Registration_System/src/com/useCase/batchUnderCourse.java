@@ -13,9 +13,11 @@ public class batchUnderCourse {
 		while(true) {
 			System.out.println("Enter Batch Name");
 			String n=sc.next();
+			System.out.println("Enter Course Id");
+			int cid=sc.nextInt();
 			System.out.println("Enter Number of seats");
 			int s=sc.nextInt();
-			Batch temp =new Batch(n, 0, s, 0);
+			Batch temp =new Batch(n, cid, s, 0);
 			
 				
 				try {

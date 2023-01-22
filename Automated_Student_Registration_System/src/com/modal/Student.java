@@ -7,14 +7,13 @@ public class Student {
 	private String sPassword;
 	private String address;
 	private String phone;
-	private int cId;
 	public Student() {
 		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {
 		return "Student [roll=" + roll + ", sName=" + sName + ", sEmail=" + sEmail + ", sPassword=" + sPassword
-				+ ", address=" + address + ", phone=" + phone + ", cId=" + cId + "]";
+				+ ", address=" + address + ", phone=" + phone + "]";
 	}
 	public int getRoll() {
 		return roll;
@@ -52,12 +51,6 @@ public class Student {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public int getcId() {
-		return cId;
-	}
-	public void setcId(int cId) {
-		this.cId = cId;
-	}
 	public Student(int roll, String sName, String sEmail, String sPassword, String address, String phone, int cId) {
 		super();
 		this.roll = roll;
@@ -66,6 +59,6 @@ public class Student {
 		this.sPassword = sPassword;
 		this.address = address;
 		this.phone = phone;
-		this.cId = cId;
+
 	}
 }

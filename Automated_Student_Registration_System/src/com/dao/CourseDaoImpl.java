@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.exception.administratortException;
 import com.exception.batchException;
@@ -14,7 +16,7 @@ import com.modal.Batch;
 import com.modal.Course;
 import com.modal.Student;
 import com.utility.DBUTil;
-
+import com.modal.*;
 public class CourseDaoImpl implements CourseDao{
 
 	@Override
@@ -113,11 +115,11 @@ public class CourseDaoImpl implements CourseDao{
 	public String batchUnderCourse(Batch batch) throws batchException {
 		String bt=null;
 		try (Connection conn=DBUTil.provideConnection()){
-			PreparedStatement ps=conn.prepareStatement("insert into Batch values(?,?,?,?)");
+			PreparedStatement ps=conn.prepareStatement("insert into Batch(bName,cId,seats) values(?,?,?)");
 			ps.setString(1,batch.getbName());
 			ps.setInt(2,batch.getcId());
 			ps.setInt(3,batch.getSeats());
-			ps.setInt(4,batch.getRoll());
+			
 			int x=ps.executeUpdate();
 			
 			if(x>0) {
@@ -170,4 +172,99 @@ public class CourseDaoImpl implements CourseDao{
 		
 		return admin;
 	}
+
+	@Override
+	public String updateTotalSeatsInaBatch(int bId,int uSeat) throws batchException {
+		String res=null;
+		
+		try (Connection conn=DBUTil.provideConnection()){
+			PreparedStatement ps=conn.prepareStatement("update Batch set seats=? where bId=?");
+			ps.setInt(1, uSeat);
+			ps.setInt(2, bId);
+			int x=ps.executeUpdate();
+			if(x>0) {
+				res="Total Seats are Updated with Batch Id: "+bId;
+			}
+			else 
+				throw new batchException("Invilade Batch Id");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return res;
+	}
+
+	@Override
+	public String AllocateStudentBatch(int roll, int cId, int bId) throws batchException {
+		String res=null;
+		try (Connection conn=DBUTil.provideConnection()){
+			PreparedStatement ps=conn.prepareStatement("select seats from Batch where cId=? AND bId=?");
+			ps.setInt(1, cId);
+			ps.setInt(2, bId);
+			
+			
+			ResultSet rs=ps.executeQuery();
+			if(rs.next()) {
+				int seats=rs.getInt("seats");
+				if(seats>0) {
+					PreparedStatement ps1=conn.prepareStatement("insert into student_course values(?,?,?)");
+					ps1.setInt(1, roll);
+					ps1.setInt(2, cId);
+					ps1.setInt(3, bId);
+					int x=ps1.executeUpdate();
+					if(x>0) {
+						PreparedStatement ps2= conn.prepareStatement("update Batch set seats=seats-1 where bId=? And cId=?");
+						ps2.setInt(1, bId);
+						ps2.setInt(2, cId);
+						int e=ps2.executeUpdate();
+						res="Sucessfully Allocate Roll "+roll+" in Batch with Id "+bId+" for Course Id "+cId;
+					}
+				}else
+					throw new batchException("Seat full.");
+				
+			
+			}
+//			if(rs.next()==false) 
+//				throw new batchException("Invilade Batch Id.");
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
+	@Override
+	public List<everyBatchStudentDetails> everyBatchStudentDetails() throws studentException {
+		List<everyBatchStudentDetails> res=new ArrayList<>();
+		
+		try(Connection conn=DBUTil.provideConnection()) {
+			PreparedStatement ps=conn.prepareStatement("select s.sName,s.roll,s.sEmail,s.address,s.phone,b.bName,b.bId,c.cName,c.cId from Student s INNER JOIN Batch b INNER JOIN Course c INNER JOIN student_course sc where sc.roll=s.roll AND sc.cId=c.cId AND sc.bId=b.bId;");
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()) {
+				String sName=rs.getString("sName");
+				int roll=rs.getInt("roll");
+				String sEmail=rs.getString("sEmail");
+				String address=rs.getString("address");
+				String phone=rs.getString("phone");
+				String bName=rs.getString("bName");
+				int bId=rs.getInt("bId");
+				String cName=rs.getString("cName");
+				int cId =rs.getInt("cId");
+				
+				everyBatchStudentDetails temp=new everyBatchStudentDetails(sName, roll, sEmail, address, phone, bName, bId, cName, cId);
+				res.add(temp);
+			}
+			if(res.isEmpty()) {
+				throw new studentException("No Data Found.");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return res;
+	}
+
 }

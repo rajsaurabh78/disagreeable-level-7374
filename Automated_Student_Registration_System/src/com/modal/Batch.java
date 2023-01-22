@@ -4,16 +4,16 @@ public class Batch {
 	private String bName;
 	private int cId;
 	private int seats;
-	private int roll;
+	private int bId;
 	public Batch() {
 		// TODO Auto-generated constructor stub
 	}
-	public Batch(String bName, int cId, int seats, int roll) {
+	public Batch(String bName, int cId, int seats, int bId) {
 		super();
 		this.bName = bName;
 		this.cId = cId;
 		this.seats = seats;
-		this.roll = roll;
+		this.bId = bId;
 	}
 	public String getbName() {
 		return bName;
@@ -33,15 +33,16 @@ public class Batch {
 	public void setSeats(int seats) {
 		this.seats = seats;
 	}
-	public int getRoll() {
-		return roll;
+	public int getbId() {
+		return bId;
 	}
-	public void setRoll(int roll) {
-		this.roll = roll;
+	public void setbId(int bId) {
+		this.bId = bId;
 	}
 	@Override
 	public String toString() {
-		return "Batch [bName=" + bName + ", cId=" + cId + ", seats=" + seats + ", roll=" + roll + "]";
+		return "Batch [bName=" + bName + ", cId=" + cId + ", seats=" + seats + ", bId=" + bId + "]";
 	}
+	
 	
 }

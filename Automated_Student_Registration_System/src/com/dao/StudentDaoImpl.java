@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.crypto.spec.RC2ParameterSpec;
+
 import com.exception.batchException;
 import com.exception.courseException;
 import com.exception.studentException;
@@ -115,7 +117,7 @@ public class StudentDaoImpl implements StudentDao{
 							PreparedStatement ps3= conn.prepareStatement("update Batch set seats=seats-1 where cId=?");
 							ps3.setInt(1, cId);
 							int b=ps3.executeUpdate();
-							stu="Sucessfull "+name+" Inrolled for Course cgg" ;
+							stu="Sucessfull "+name+" Inrolled for Course Id : "+cId ;
 							
 						}else
 							throw new courseException("Invilade Course Id");
@@ -133,6 +135,28 @@ public class StudentDaoImpl implements StudentDao{
 			e.printStackTrace();
 		}
 		return stu;
+	}
+	@Override
+	public String updateStudentDetails(Student student) throws studentException {
+		String res=null;
+		try(Connection conn=DBUTil.provideConnection()) {
+			PreparedStatement ps=conn.prepareStatement("update Student set sEmail=?,sPassword=?,address=?,phone=? where roll=?");
+			ps.setString(1, student.getsEmail());
+			ps.setString(2, student.getsPassword());
+			ps.setString(3, student.getAddress());
+			ps.setString(4, student.getPhone());
+			ps.setInt(5, student.getRoll());
+			int x=ps.executeUpdate();
+			
+			if(x>0) {
+				res="Sucessfull Updated Details.";
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return res;
 	}
 
 }
