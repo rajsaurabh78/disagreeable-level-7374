@@ -1,10 +1,12 @@
 package com.useCase;
 
 import java.util.Scanner;
+
+import com.Color.Color;
 import com.dao.StudentDao;
 import com.dao.StudentDaoImpl;
 import com.exception.studentException;
-import com.modal.Student;
+import com.main.Main;
 
 public class loginStudent {
 
@@ -19,11 +21,26 @@ public class loginStudent {
 			try {
 				String stu=dao.loginStudent(e, p);
 				System.out.println(stu);
+				System.out.println();
+				System.out.println(Color.ANSI_Red+Color.ANSI_black_BACKGROUND+"Register Yourself in a Course Type : 0"+"\n"+"Update Your Details Type : 1"+"\n"+"See all available Course and Seats Type : 2"+"\n"+"For Main menu Press 9"+Color.ANSI_RESET);
+				int res=sc.nextInt();
+				if(res==0) {
+					registerINaCourse.main(args);
+					
+				}else if(res==1) {
+					updateStudentDetails.main(args);
+					
+				}else if(res==2) {
+					availableCourseList.main(args);
+					
+				}else {
+					Main.main(args);
+				}
 			} catch (studentException e1) {
 				// TODO Auto-generated catch block
 				System.out.println(e1.getMessage());
 			}
-				System.out.println("Thanks");
+				
 		}
 
 	}

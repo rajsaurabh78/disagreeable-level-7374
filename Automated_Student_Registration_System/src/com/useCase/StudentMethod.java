@@ -6,16 +6,14 @@ import com.dao.CourseDao;
 import com.dao.CourseDaoImpl;
 import com.dao.StudentDao;
 import com.dao.StudentDaoImpl;
-import com.exception.administratortException;
 import com.exception.studentException;
-import com.modal.Administrator;
 import com.modal.Student;
 
-public class registerAdministrator {
-
-	public static void main(String[] args) {
+public class StudentMethod {
+	public static void registerStudent() {
+		
 		Scanner sc=new Scanner(System.in);
-		CourseDao dao=new CourseDaoImpl();
+		StudentDao dao=new StudentDaoImpl();
 		System.out.println("Fill following details to register yourself");
 			System.out.println("Enter Name");
 			String n=sc.next();
@@ -23,16 +21,22 @@ public class registerAdministrator {
 			String e=sc.next();
 			System.out.println("Enter Password");
 			String p=sc.next();
-
-			Administrator temp=new Administrator(0, n, e, p);
+			System.out.println("Enter Address");
+			String a=sc.next();
+			System.out.println("Enter Phone");
+			String ph=sc.next();
+			Student temp=new Student(0, n, e, p, a, ph, 0);
 			try {
-				String stu=dao.registerAdministrator(temp);
+				String stu=dao.registerStudent(temp);
 				System.out.println(stu);
-			} catch (administratortException e1) {
+			//	System.out.println("Thanks for Registering.");
+				System.out.println();
+				loginStudent.main(null);
+			} catch (studentException e1) {
 				// TODO Auto-generated catch block
 				System.out.println(e1.getMessage());
 			}
-				System.out.println("Thanks");
+				
 		}
-
-	}
+	
+}

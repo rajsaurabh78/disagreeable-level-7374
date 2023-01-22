@@ -114,9 +114,9 @@ public class StudentDaoImpl implements StudentDao{
 						int x=ps2.executeUpdate();
 						if(x>0) {
 							
-							PreparedStatement ps3= conn.prepareStatement("update Batch set seats=seats-1 where cId=?");
-							ps3.setInt(1, cId);
-							int b=ps3.executeUpdate();
+//							PreparedStatement ps3= conn.prepareStatement("update Batch set seats=seats-1 where cId=?");
+//							ps3.setInt(1, cId);
+//							int b=ps3.executeUpdate();
 							stu="Sucessfull "+name+" Inrolled for Course Id : "+cId ;
 							
 						}else

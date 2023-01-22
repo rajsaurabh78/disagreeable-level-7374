@@ -1,13 +1,14 @@
 package com.useCase;
 
 import java.util.Scanner;
+
+import com.Color.Color;
 import com.dao.StudentDao;
 import com.dao.StudentDaoImpl;
 import com.exception.batchException;
 import com.exception.courseException;
 import com.exception.studentException;
-import com.modal.Student;
-import com.modal.availableCourse;
+import com.main.Main;
 
 public class registerINaCourse {
 
@@ -24,8 +25,23 @@ public class registerINaCourse {
 			int ph=sc.nextInt();
 			
 			try {
-				String res=dao.registerINaCourse(e, p, ph);
-				System.out.println(res);
+				String res1=dao.registerINaCourse(e, p, ph);
+				System.out.println(res1);
+				System.out.println();
+				System.out.println(Color.ANSI_Red+Color.ANSI_black_BACKGROUND+"Register Yourself in a Course Type : 0"+"\n"+"Update Your Details Type : 1"+"\n"+"See all available Course and Seats Type : 2"+"\n"+"For Main menu Press 9"+Color.ANSI_RESET);
+				int res=sc.nextInt();
+				if(res==0) {
+					registerINaCourse.main(args);
+					
+				}else if(res==1) {
+					updateStudentDetails.main(args);
+					
+				}else if(res==2) {
+					availableCourseList.main(args);
+					
+				}else {
+					Main.main(args);
+				}
 			} catch (batchException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
