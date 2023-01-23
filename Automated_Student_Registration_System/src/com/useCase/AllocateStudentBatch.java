@@ -15,7 +15,7 @@ public class AllocateStudentBatch {
 		CourseDao dao=new CourseDaoImpl();
 		System.out.println("Enter following Details for Allocate a Batch for a Student.");
 		
-		while(true) {
+	//	while(true) {
 			System.out.println("Enter Roll No");
 			int r=sc.nextInt();
 			System.out.println("Enter Course Id");
@@ -60,13 +60,13 @@ public class AllocateStudentBatch {
 				// TODO Auto-generated catch block
 				System.out.println(e.getMessage());
 			}
-			System.out.println("Do you want to Allocate other Student tpp. ? (Y/N)");
-			String res1=sc.next();
-			if(res1.equalsIgnoreCase("N")) {
-				System.out.println("Thanks ");
-				break;
-			}
-		}
+//			System.out.println("Do you want to Allocate other Student tpp. ? (Y/N)");
+//			String res1=sc.next();
+//			if(res1.equalsIgnoreCase("N")) {
+//				System.out.println("Thanks ");
+//				break;
+//			}
+//		}
 
 	}
 

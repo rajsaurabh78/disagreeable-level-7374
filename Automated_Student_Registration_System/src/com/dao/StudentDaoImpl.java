@@ -32,7 +32,7 @@ public class StudentDaoImpl implements StudentDao{
 			ps.setString(5, student.getPhone());
 			int x=ps.executeUpdate();
 			if(x>0) {
-				stu=student.getsName()+"is registered";
+				stu=student.getsName()+" is registered";
 			}else
 				throw new studentException("Not Registered");
 			

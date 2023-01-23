@@ -14,7 +14,7 @@ public class deleteCourse {
 		Scanner sc=new Scanner(System.in);
 		CourseDao dao=new CourseDaoImpl();
 		System.out.println("Enter following details to Delete a course.");
-		while(true) {
+	//	while(true) {
 			System.out.println("Enter Course Name");
 			String n=sc.next();
 			try {
@@ -53,13 +53,13 @@ public class deleteCourse {
 			} catch (courseException e) {
 				System.out.println(e.getMessage());
 			}
-			System.out.println("Do you want to Delete more course?(Y/N)");
-			String res2=sc.next();
-			if(res2.equalsIgnoreCase("n")) {
-				System.out.println("Thanks for Using this System.");
-				break;
-			}
-		}
+//			System.out.println("Do you want to Delete more course?(Y/N)");
+//			String res2=sc.next();
+//			if(res2.equalsIgnoreCase("n")) {
+//				System.out.println("Thanks for Using this System.");
+//				break;
+//			}
+//		}
 
 	}
 

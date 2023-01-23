@@ -16,7 +16,7 @@ public class registerINaCourse {
 		Scanner sc=new Scanner(System.in);
 		StudentDao dao=new StudentDaoImpl();
 		System.out.println("Fill following details to register in a Course.");
-		while(true) {
+	//	while(true) {
 			System.out.println("Enter Email");
 			String e=sc.next();
 			System.out.println("Enter Password");
@@ -55,13 +55,13 @@ public class registerINaCourse {
 				
 			
 			
-				System.out.println("Do you want to inrolled in other Course ?(Y/N)");
-				String res=sc.next();
-				if(res.equalsIgnoreCase("N")) {
-					System.out.println("Thanks");
-					break;
-				}	
-				
-			}
+//				System.out.println("Do you want to inrolled in other Course ?(Y/N)");
+//				String res=sc.next();
+//				if(res.equalsIgnoreCase("N")) {
+//					System.out.println("Thanks");
+//					break;
+//				}	
+//				
+//			}
 		}
 	}

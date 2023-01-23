@@ -26,7 +26,7 @@ public class AdminMethod {
 					// TODO Auto-generated catch block
 					System.out.println(e1.getMessage());
 				}
-					System.out.println("Thanks for Rejistering");
+					System.out.println("Thanks for Registering.");
 					System.out.println();
 					loginAdministrator.main(null);
 			

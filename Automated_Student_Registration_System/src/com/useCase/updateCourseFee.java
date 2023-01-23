@@ -14,7 +14,7 @@ public class updateCourseFee {
 		Scanner sc=new Scanner(System.in);
 		CourseDao dao=new CourseDaoImpl();
 		System.out.println("Enter following details for update a coures fee");
-		while(true) {
+	//	while(true) {
 			System.out.println("Enter Course Name");
 			String n=sc.next();
 			System.out.println("Enter Updated Fee");
@@ -55,13 +55,13 @@ public class updateCourseFee {
 			} catch (courseException e) {
 				System.out.println(e.getMessage());
 			}
-			System.out.println("Do you want to Update more course fee ?(Y/N)");
-			String res2=sc.next();
-			if(res2.equalsIgnoreCase("n")) {
-				System.out.println("Thanks for Using this System");
-				break;
-			}
-		}
+//			System.out.println("Do you want to Update more course fee ?(Y/N)");
+//			String res2=sc.next();
+//			if(res2.equalsIgnoreCase("n")) {
+//				System.out.println("Thanks for Using this System");
+//				break;
+//			}
+//		}
 
 	}
 

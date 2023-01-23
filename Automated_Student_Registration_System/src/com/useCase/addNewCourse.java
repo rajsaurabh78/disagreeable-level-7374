@@ -14,8 +14,8 @@ public class addNewCourse {
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
 		CourseDao dao=new CourseDaoImpl();
-		System.out.println("Fill following details to add a new Course");
-		while(true) {
+		System.out.println(Color.ANSI_white+Color.ANSI_green_BACKGROUND+"Fill following details to add a new Course"+Color.ANSI_RESET);
+//		while(true) {
 			System.out.println("Enter Course Name");
 			String n=sc.next();
 			System.out.println("Enter Course Duration");
@@ -60,12 +60,12 @@ public class addNewCourse {
 				
 				System.out.println(e.getMessage());
 			}
-				System.out.println("Do you want to add more Course ?(Y/N)");
-				String res=sc.next();
-				if(res.equalsIgnoreCase("N")){
-				System.out.println("Thanks For Using This System.");
-				break;
-			}
-		}
+//				System.out.println("Do you want to add more Course ?(Y/N)");
+//				String res=sc.next();
+//				if(res.equalsIgnoreCase("N")){
+//				System.out.println("Thanks For Using This System.");
+//				break;
+//			}
+//		}
 	}
 }

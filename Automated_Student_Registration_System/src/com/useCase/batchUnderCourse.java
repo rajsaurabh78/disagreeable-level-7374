@@ -13,7 +13,7 @@ public class batchUnderCourse {
 		Scanner sc=new Scanner(System.in);
 		CourseDao dao=new CourseDaoImpl();
 		System.out.println("Fill following details to add a batch in Course");
-		while(true) {
+//		while(true) {
 			System.out.println("Enter Batch Name");
 			String n=sc.next();
 			System.out.println("Enter Course Id");
@@ -59,13 +59,13 @@ public class batchUnderCourse {
 				} catch (batchException e) {
 					System.out.println(e.getMessage());
 				}
-				System.out.println("Do you want to add more Batch ?(Y/N)");
-				String res1=sc.next();
-				if(res1.equalsIgnoreCase("N")){
-				System.out.println("Thanks For Using This System.");
-				break;
-			}
-		}
+//				System.out.println("Do you want to add more Batch ?(Y/N)");
+//				String res1=sc.next();
+//				if(res1.equalsIgnoreCase("N")){
+//				System.out.println("Thanks For Using This System.");
+//				break;
+//			}
+//		}
 
 	}
 

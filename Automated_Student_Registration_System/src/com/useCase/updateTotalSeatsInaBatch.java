@@ -15,7 +15,7 @@ public class updateTotalSeatsInaBatch {
 		Scanner sc=new Scanner(System.in);
 		CourseDao dao=new CourseDaoImpl();
 		System.out.println("Enter following details for update Total Seats in a Batch");
-		while(true) {
+//		while(true) {
 			System.out.println("Enter Batch Id");
 			int i=sc.nextInt();
 			System.out.println("Enter Updated Seats");
@@ -57,13 +57,13 @@ public class updateTotalSeatsInaBatch {
 				System.out.println(e.getMessage());
 				
 			}
-			System.out.println("Do you want to Update other Batch seats also. ?(Y/N)");
-			String res2=sc.next();
-			if(res2.equalsIgnoreCase("n")) {
-				System.out.println("Thanks for Using this System");
-				break;
-			}
-		}
+//			System.out.println("Do you want to Update other Batch seats also. ?(Y/N)");
+//			String res2=sc.next();
+//			if(res2.equalsIgnoreCase("n")) {
+//				System.out.println("Thanks for Using this System");
+//				break;
+//			}
+//		}
 
 	}
 

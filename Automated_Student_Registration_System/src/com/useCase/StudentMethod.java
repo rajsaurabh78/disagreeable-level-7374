@@ -2,6 +2,7 @@ package com.useCase;
 
 import java.util.Scanner;
 
+import com.Color.Color;
 import com.dao.CourseDao;
 import com.dao.CourseDaoImpl;
 import com.dao.StudentDao;
@@ -28,7 +29,7 @@ public class StudentMethod {
 			Student temp=new Student(0, n, e, p, a, ph, 0);
 			try {
 				String stu=dao.registerStudent(temp);
-				System.out.println(stu);
+				System.out.println(Color.ANSI_PURPLE+stu+Color.ANSI_RESET);
 			//	System.out.println("Thanks for Registering.");
 				System.out.println();
 				loginStudent.main(null);
