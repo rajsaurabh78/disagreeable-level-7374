@@ -54,11 +54,13 @@ public class AllocateStudentBatch {
 					everyBatchStudentDetailsUseCase.main(null);
 	
 				}else {
-					Main.main(args);
+					System.out.println("Wrong input");
+					Main.second();
 				}
 			} catch (batchException e) {
 				// TODO Auto-generated catch block
 				System.out.println(e.getMessage());
+				Main.second();
 			}
 //			System.out.println("Do you want to Allocate other Student tpp. ? (Y/N)");
 //			String res1=sc.next();

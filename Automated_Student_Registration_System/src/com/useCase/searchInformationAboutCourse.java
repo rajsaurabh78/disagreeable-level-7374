@@ -52,11 +52,11 @@ public class searchInformationAboutCourse {
 					everyBatchStudentDetailsUseCase.main(null);
 	
 				}else {
-					Main.main(args);
+					Main.second();;
 				}
 			} catch (courseException e) {
 				System.out.println(e.getMessage());
-				
+				Main.second();
 			}
 			System.out.println("Do you want to know any other course details?(Y/N)");
 			String res2=sc.next();

@@ -51,10 +51,12 @@ public class updateTotalSeatsInaBatch {
 					everyBatchStudentDetailsUseCase.main(null);
 	
 				}else {
-					Main.main(args);
+					System.out.println("Wrong Input");
+					Main.second();
 				}
 			} catch (batchException e) {
 				System.out.println(e.getMessage());
+				Main.second();
 				
 			}
 //			System.out.println("Do you want to Update other Batch seats also. ?(Y/N)");

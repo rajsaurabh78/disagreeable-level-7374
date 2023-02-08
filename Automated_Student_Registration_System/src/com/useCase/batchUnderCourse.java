@@ -54,10 +54,11 @@ public class batchUnderCourse {
 					everyBatchStudentDetailsUseCase.main(null);
 	
 				}else {
-					Main.main(args);
+					Main.second();
 				}
 				} catch (batchException e) {
 					System.out.println(e.getMessage());
+					Main.second();
 				}
 //				System.out.println("Do you want to add more Batch ?(Y/N)");
 //				String res1=sc.next();

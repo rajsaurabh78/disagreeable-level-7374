@@ -31,11 +31,13 @@ public class availableCourseList {
 						availableCourseList.main(args);
 						
 					}else {
-						Main.main(args);
+						System.out.println("Wrong Input");
+						Main.third();
 					}	
 			} catch (courseException e1) {
 				
 				System.out.println(e1.getMessage());
+				Main.third();
 				
 			}
 

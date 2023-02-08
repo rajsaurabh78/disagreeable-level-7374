@@ -57,10 +57,12 @@ public class everyBatchStudentDetailsUseCase {
 				everyBatchStudentDetailsUseCase.main(null);
 
 			}else {
-				Main.main(args);
+				System.out.println("Wrong Input");
+				Main.second();;
 			}
 		} catch (studentException e) {
 			System.out.println(e.getMessage());
+			Main.second();
 		}
 
 	}

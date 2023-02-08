@@ -54,11 +54,12 @@ public class addNewCourse {
 					everyBatchStudentDetailsUseCase.main(null);
 	
 				}else {
-					Main.main(args);
+					Main.second();
 				}
 			} catch (courseException e) {
 				
 				System.out.println(e.getMessage());
+				Main.second();
 			}
 //				System.out.println("Do you want to add more Course ?(Y/N)");
 //				String res=sc.next();

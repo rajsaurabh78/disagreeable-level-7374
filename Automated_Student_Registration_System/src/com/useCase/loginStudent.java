@@ -34,11 +34,15 @@ public class loginStudent {
 					availableCourseList.main(args);
 					
 				}else {
-					Main.main(args);
+					System.out.println("Wrong Input");
+					Main.third();;
 				}
 			} catch (studentException e1) {
-				// TODO Auto-generated catch block
 				System.out.println(e1.getMessage());
+				Main.main(args);
+			}catch (Exception e2) {
+				System.out.println("Wrong Input");
+				Main.third();;
 			}
 				
 		}

@@ -49,11 +49,16 @@ public class loginAdministrator {
 					everyBatchStudentDetailsUseCase.main(null);
 	
 				}else {
-					Main.main(args);
+					System.out.println("wrong input");
+					Main.second();
 				}
 			} catch (administratortException e1) {
 				// TODO Auto-generated catch block
 				System.out.println(e1.getMessage());
+				Main.main(args);
+			} catch (Exception e2) {
+				System.out.println("wrong input");
+				Main.second();
 			}
 		}
 

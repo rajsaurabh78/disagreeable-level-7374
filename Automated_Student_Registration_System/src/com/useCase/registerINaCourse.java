@@ -40,17 +40,21 @@ public class registerINaCourse {
 					availableCourseList.main(args);
 					
 				}else {
-					Main.main(args);
+					System.out.println("Wrong Input");
+					Main.third();;
 				}
 			} catch (batchException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				Main.third();
 			} catch (studentException e1) {
 				// TODO Auto-generated catch block
+				Main.third();
 				e1.printStackTrace();
 			} catch (courseException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
+				Main.third();
 			}
 				
 			

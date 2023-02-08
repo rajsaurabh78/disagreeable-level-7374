@@ -50,10 +50,11 @@ public class updateCourseFee {
 					everyBatchStudentDetailsUseCase.main(null);
 	
 				}else {
-					Main.main(args);
+					Main.second();;
 				}
 			} catch (courseException e) {
 				System.out.println(e.getMessage());
+				Main.second();
 			}
 //			System.out.println("Do you want to Update more course fee ?(Y/N)");
 //			String res2=sc.next();
