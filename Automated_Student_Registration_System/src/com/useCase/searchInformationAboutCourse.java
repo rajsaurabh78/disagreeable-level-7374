@@ -25,7 +25,7 @@ public class searchInformationAboutCourse {
 				System.out.println("Course Duration is: "+res1.getDuration());
 				System.out.println("Course Fee is: "+res1.getFee());
 				System.out.println();
-				System.out.println(Color.ANSI_Red+Color.ANSI_black_BACKGROUND+"For Adding a new Courses Type : 0"+"\n"+"Update Fees of Course Type : 1"+"\n"+"Delete  a course Type : 2"+"\n"+"Information about a Course Type : 3"+"\n"+"Create Batch under a course Type : 4"+"\n"+"Allocate students in a Batch under a course Type : 5"+"\n"+"Update total seats of a batch Type : 6"+"\n"+"View the students of every batch Type : 7"+"\n"+"For Main Menu Type : 9"+Color.ANSI_RESET);
+				System.out.println(Color.ANSI_Red+Color.ANSI_black_BACKGROUND+"For Adding a new Courses Type : 0"+"\n"+"Update Fees of Course Type : 1"+"\n"+"Delete  a course Type : 2"+"\n"+"Information about a Course Type : 3"+"\n"+"Create Batch under a course Type : 4"+"\n"+"Allocate students in a Batch under a course Type : 5"+"\n"+"Update total seats of a batch Type : 6"+"\n"+"View the students of every batch Type : 7"+"\n"+"For Exit Type : 9"+Color.ANSI_RESET);
 				int res=sc.nextInt();
 				if(res==0) {
 					addNewCourse.main(null);
@@ -50,6 +50,9 @@ public class searchInformationAboutCourse {
 	
 				}else if(res==7) {
 					everyBatchStudentDetailsUseCase.main(null);
+	
+				}else if(res==9) {
+					Main.Exit();
 	
 				}else {
 					Main.second();;
