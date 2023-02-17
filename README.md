@@ -1,6 +1,15 @@
 
 
-Student registration system
+Student registration system:-
+
+
+
+
+
+
+
+This automated application help Institute to enroll students efficiently,
+create batches under a course and allocates the students  in a batch. 
 
 There are tro user of this Application:-
 
