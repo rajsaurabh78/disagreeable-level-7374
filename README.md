@@ -1,6 +1,7 @@
 ##  Student registration system
 
-<img src='https://drive.google.com/uc?export=view&id=1QUERYonRqQaH40SKISc9gszYnNhxPIqX' alt='Service_Today'>
+![student-registration](https://user-images.githubusercontent.com/108000350/229403789-e530f384-dfed-4042-b501-92da5890d487.png)
+
 
 This automated application help Institute to enroll students efficiently,
 create batches under a course and allocates the students  in a batch. 
@@ -18,7 +19,7 @@ create batches under a course and allocates the students  in a batch.
 - JAVA
 - Sts
 
-There are tro user of this Application:-
+There are two user of this Application:-
 
     1.Admin
     2.Student
