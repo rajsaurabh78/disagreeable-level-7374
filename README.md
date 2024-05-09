@@ -48,6 +48,6 @@ Roles for a Student:
 ![sb101](https://user-images.githubusercontent.com/108000350/221761754-f35f4e54-45e8-4948-8b76-a380e56f8e7e.png)
 
 
-### Explanation Video Link -  [Link]()
+### Explanation Video Link -  [[Link](https://drive.google.com/file/d/1yNVrUuM2ysVGa1xZdeSxanMAkBz6p1eT/view?usp=sharing)]()
 
 # disagreeable-level-7374
